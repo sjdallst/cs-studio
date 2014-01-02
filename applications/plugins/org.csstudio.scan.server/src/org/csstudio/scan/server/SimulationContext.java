@@ -7,6 +7,7 @@
  ******************************************************************************/
 package org.csstudio.scan.server;
 
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.List;
@@ -14,19 +15,20 @@ import java.util.Map;
 
 import org.csstudio.apputil.macros.MacroUtil;
 import org.csstudio.scan.ScanSystemPreferences;
+import org.csstudio.scan.device.ScanConfig;
 import org.csstudio.scan.device.SimulatedDevice;
-import org.csstudio.scan.server.internal.MacroStack;
+import org.csstudio.scan.server.internal.PathStreamTool;
 
 /** Context used for the simulation of {@link ScanCommandImpl}
  *  @author Kay Kasemir
  */
 @SuppressWarnings("nls")
-public class SimulationContext implements MacroContext
+public class SimulationContext
 {
-	final private SimulationInfo simulation_info;
+	final private ScanConfig simulation_info;
 
     /** Macros for resolving device names */
-    final private MacroStack macros;
+    final private MacroContext macros;
 	
 	final private Map<String, SimulatedDevice> devices = new HashMap<String, SimulatedDevice>();
 
@@ -40,30 +42,16 @@ public class SimulationContext implements MacroContext
 	 */
 	public SimulationContext(final PrintStream log_stream) throws Exception
 	{
-	    this.simulation_info = SimulationInfo.getDefault();
-        this.macros = new MacroStack(ScanSystemPreferences.getMacros());
+        final InputStream config_stream = PathStreamTool.openStream(ScanSystemPreferences.getSimulationConfigPath());
+	    this.simulation_info = new ScanConfig(config_stream);
+        this.macros = new MacroContext(ScanSystemPreferences.getMacros());
 		this.log_stream = log_stream;
 	}
 
-    /** {@inheritDoc} */
-    @Override
-    public String resolveMacros(final String text) throws Exception
+    /** @return Macro support */
+    public MacroContext getMacros()
     {
-        return MacroUtil.replaceMacros(text, macros);
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void pushMacros(String names_and_values) throws Exception
-    {
-        this.macros.push(names_and_values);
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void popMacros()
-    {
-        macros.pop();
+        return macros;
     }
 
     /** @return Current time of simulation in seconds */
@@ -95,7 +83,7 @@ public class SimulationContext implements MacroContext
     	SimulatedDevice device = devices.get(expanded_name);
 		if (device == null)
 		{
-			device = new SimulatedDevice(expanded_name, simulation_info);
+		    device = new SimulatedDevice(expanded_name, simulation_info);
 			devices.put(expanded_name, device);
 		}
 	    return device;
