@@ -1,14 +1,13 @@
-package org.csstudio.rocs.widgets;
+package org.csstudio.service.rocs;
 
-import gov.bnl.channelfinder.api.Property;
 
 import java.util.Collection;
+import java.util.Map;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -26,8 +25,8 @@ public class PropertyCollectionAdapterSet extends XmlAdapter<Object,Collection<X
 				if (property.getId() != null) {
 					Element propElement = doc.createElement("property");
 					propElement.setAttribute("id", property.getId());
-					for(Property prop :property.getProperties()){
-						Element keyValuePair = doc.createElement(prop.getName());
+					for(Map.Entry<String,String> prop :property.getProperties().entrySet()){
+						Element keyValuePair = doc.createElement(prop.getKey());
 					if (prop.getValue() == null) {
 						keyValuePair.appendChild(doc.createTextNode(""));
 					} else {

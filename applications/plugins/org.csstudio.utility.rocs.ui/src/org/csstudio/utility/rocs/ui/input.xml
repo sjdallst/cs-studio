@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<properties id="FC">
+    <properties>
+        <property id="REABTS241164">
+            <D>1164</D>
+            <SubSystem>BTS24</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee7</hostName>
+            <iocName>ioclline</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS251178">
+            <D>1178</D>
+            <SubSystem>BTS25</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee7</hostName>
+            <iocName>ioclline</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS251207">
+            <D>1207</D>
+            <SubSystem>BTS25</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee7</hostName>
+            <iocName>ioclline</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS251212">
+            <D>1212</D>
+            <SubSystem>BTS25</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee7</hostName>
+            <iocName>ioclline</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS251213">
+            <D>1213</D>
+            <SubSystem>BTS25</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee7</hostName>
+            <iocName>ioclline</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS301256">
+            <D>1256</D>
+            <SubSystem>BTS30</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee2</hostName>
+            <iocName>llineExt</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS301316">
+            <D>1316</D>
+            <SubSystem>BTS30</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee2</hostName>
+            <iocName>llineExt</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS301355">
+            <D>1355</D>
+            <SubSystem>BTS30</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee2</hostName>
+            <iocName>llineExt</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS311439">
+            <D>1439</D>
+            <SubSystem>BTS31</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee2</hostName>
+            <iocName>llineExt</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS331420">
+            <D>1420</D>
+            <SubSystem>BTS33</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee2</hostName>
+            <iocName>llineExt</iocName>
+            <System>REA</System>
+        </property>
+        <property id="REABTS341448">
+            <D>1448</D>
+            <SubSystem>BTS34</SubSystem>
+            <Device>FC</Device>
+            <hostName>banshee2</hostName>
+            <iocName>llineExt</iocName>
+            <System>REA</System>
+        </property>
+    </properties>
+</properties>

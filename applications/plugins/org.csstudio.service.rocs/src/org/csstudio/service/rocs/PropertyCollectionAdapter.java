@@ -1,9 +1,7 @@
-package org.csstudio.rocs.widgets;
+package org.csstudio.service.rocs;
 
-import gov.bnl.channelfinder.api.Property;
-
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.parsers.DocumentBuilder;
@@ -15,18 +13,18 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
-public class PropertyCollectionAdapter extends XmlAdapter<Object,Collection<Property>> {
+public class PropertyCollectionAdapter extends XmlAdapter<Object,Map<String,String>> {
 
 	@Override
-	public Object marshal(Collection<Property> v) throws Exception {
+	public Object marshal(Map<String,String> v) throws Exception {
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.newDocument();
 			Element customXml = doc.createElement("property2");
-			for (Property property : v) {
-				if (property.getName() != null) {
-					Element keyValuePair = doc.createElement(property.getName());
+			for (Map.Entry<String, String> property : v.entrySet()) {
+				if (property.getKey() != null) {
+					Element keyValuePair = doc.createElement(property.getKey());
 					if (property.getValue() == null) {
 						keyValuePair.appendChild(doc.createTextNode(""));
 					} else {
@@ -44,8 +42,8 @@ public class PropertyCollectionAdapter extends XmlAdapter<Object,Collection<Prop
 	}
 
 	@Override
-	public Collection<Property> unmarshal(Object v) throws Exception {
-		Collection<Property> properties = new ArrayList<Property>();
+	public Map<String,String> unmarshal(Object v) throws Exception {
+		Map<String,String> properties = new HashMap<String,String>();
 		Element content = (Element) v;
 		NodeList childNodes = content.getChildNodes();
 		if (childNodes.getLength() > 0) {

@@ -1,4 +1,4 @@
-package org.csstudio.rocs.widgets;
+package org.csstudio.utility.rocs;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,6 +45,9 @@ public class TemplateXMLFactory {
 	        files.addAll(getTemplateFiles());
 	    }
 	    
+	    public static ExecutorService getExecutorService(){
+	    	return defaultExecutor;
+	    }
 	    /**
 	     * Crawls the directory and creates templates.
 	     * <p>
@@ -70,7 +73,7 @@ public class TemplateXMLFactory {
 	    	} catch (ExecutionException e) {
 	    		Logger.getLogger(Templates.class.getName()).log(Level.INFO, "Failed creating template from ", e);
 	    	}
-	    	defaultExecutor.shutdown();
+	    	
 
 	    	return templates;
 	    }

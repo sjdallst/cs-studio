@@ -24,7 +24,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime;bundle-version="3.7.0",
  org.eclipse.core.resources;bundle-version="3.7.101",
  org.csstudio.openfile,
- org.csstudio.utility.file;bundle-version="1.0.0"
+ org.csstudio.utility.file;bundle-version="1.0.0",
+ org.csstudio.utility.rocs,
+ org.csstudio.utility.rocs.ui
 Export-Package: org.csstudio.rocs.widgets
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

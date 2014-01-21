@@ -1,9 +1,7 @@
-package org.csstudio.rocs.widgets;
+package org.csstudio.utility.rocs;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
@@ -12,15 +10,10 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.bind.*;
-import javax.xml.bind.util.JAXBResult;
-import javax.xml.bind.util.JAXBSource;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Result;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
@@ -47,8 +40,8 @@ public class Templates {
 		try {
 
 			TransformerFactory tf = TransformerFactory.newInstance();
-			Bundle bundle = Platform.getBundle("org.csstudio.rocs.widgets");
-			Path path = new Path("src/org/csstudio/rocs/widgets/MacroReplace.xsl");
+			Bundle bundle = Platform.getBundle("org.csstudio.utility.rocs");
+			Path path = new Path("src/org/csstudio/utility/rocs/MacroReplace.xsl");
 			URL fileURL = FileLocator.find(bundle, path, null);
 			InputStream in = fileURL.openStream();
 			StreamSource xslt = new StreamSource(in);
@@ -56,7 +49,7 @@ public class Templates {
 
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
 			StreamResult result = new StreamResult(os);
-			Matcher matcher = namePattern.matcher(name);
+			//Matcher matcher = namePattern.matcher(name);
 
 			transformer.setParameter("templateName", name);
 			transformer.transform(new StreamSource(input), result);

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ROCS Service
+Bundle-SymbolicName: org.csstudio.service.rocs;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.csstudio.service.rocs.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.csstudio.utility.pvmanager,
+ org.csstudio.utility.pvmanager.ui,
+ org.epics.vtype,
+ org.csstudio.utility.rocs.ui,
+ org.csstudio.utility.rocs
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

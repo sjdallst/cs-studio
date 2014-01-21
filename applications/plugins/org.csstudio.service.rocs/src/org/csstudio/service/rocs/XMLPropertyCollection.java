@@ -1,19 +1,11 @@
-package org.csstudio.rocs.widgets;
+package org.csstudio.service.rocs;
 
-import gov.bnl.channelfinder.api.Property;
-
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.bind.annotation.XmlAccessType;
 
@@ -25,13 +17,13 @@ public class XMLPropertyCollection implements Comparable<XMLPropertyCollection>{
 	
 	@XmlElement(name="property")
 	@XmlJavaTypeAdapter(PropertyCollectionAdapter.class) 
-	private Collection<Property> properties = new ArrayList<Property>();
+	private Map<String,String> properties = new HashMap<String,String>();
 
 	
 	public XMLPropertyCollection() {
 	}
 
-	public XMLPropertyCollection(String id, Collection<Property> properties) {
+	public XMLPropertyCollection(String id, Map<String,String> properties) {
 
 		this.id = id;
 		this.properties = properties;
@@ -45,11 +37,11 @@ public class XMLPropertyCollection implements Comparable<XMLPropertyCollection>{
 		this.id = id;
 	}
 
-	public Collection<Property> getProperties() {
+	public Map<String,String> getProperties() {
 		return properties;
 	}
 
-	public void setProperties(Collection<Property> properties) {
+	public void setProperties(Map<String,String> properties) {
 		this.properties = properties;
 	}
 

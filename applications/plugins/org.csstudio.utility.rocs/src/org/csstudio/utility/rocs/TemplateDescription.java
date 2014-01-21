@@ -1,4 +1,4 @@
-package org.csstudio.rocs.widgets;
+package org.csstudio.utility.rocs;
 
 
 import java.util.concurrent.ExecutorService;

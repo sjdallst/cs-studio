@@ -1,15 +1,10 @@
-package org.csstudio.rocs.widgets;
+package org.csstudio.utility.rocs;
 
-import java.io.File;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
 
 public class TemplateRegistry {
     private final static TemplateRegistry registry = new TemplateRegistry();
