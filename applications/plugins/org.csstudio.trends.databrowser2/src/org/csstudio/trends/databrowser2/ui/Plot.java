@@ -33,7 +33,8 @@ import org.csstudio.trends.databrowser2.model.AxisConfig;
 import org.csstudio.trends.databrowser2.model.ChannelInfo;
 import org.csstudio.trends.databrowser2.model.Model;
 import org.csstudio.trends.databrowser2.model.ModelItem;
-import org.csstudio.trends.databrowser2.model.XYGraphSettings;
+import org.csstudio.trends.databrowser2.persistence.XYGraphSettings;
+import org.csstudio.trends.databrowser2.persistence.XYGraphSettingsUtil;
 import org.csstudio.ui.util.dialogs.ExceptionDetailsErrorDialog;
 import org.csstudio.ui.util.dnd.ControlSystemDropTarget;
 import org.eclipse.draw2d.IFigure;
@@ -90,7 +91,7 @@ public class Plot
 	private boolean plot_changes_graph = false;
 
 	private TimeConfigButton time_config_button;
-
+	
 	/**
 	 * Create a plot that is attached to an SWT canvas
 	 *
@@ -865,14 +866,14 @@ public class Plot
 
 			infos[i] = new AnnotationInfo(timestamp, value, y, title,
 					lineStyle, annotation.isShowName(),
-					annotation.isShowPosition(), data, rgb);
+					annotation.isShowPosition(),annotation.isShowSampleInfo(), data, rgb);
 		}
 		return infos;
 	}
 
 	public XYGraphSettings getGraphSettings()
 	{
-		return XYGraphSettingsUtil.createGraphSettings(plot.getXYGraph());
+		return XYGraphSettingsUtil.createSettings(plot.getXYGraph());
 	}
 
 	public void setGraphSettings(final XYGraphSettings settings)
