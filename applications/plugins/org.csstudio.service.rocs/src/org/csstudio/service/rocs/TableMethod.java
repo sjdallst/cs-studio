@@ -22,6 +22,7 @@ import org.epics.pvmanager.service.ServiceMethodDescription;
 import org.epics.util.array.ListNumber;
 import org.epics.util.time.Timestamp;
 import org.epics.vtype.VEnum;
+import org.epics.vtype.VString;
 import org.epics.vtype.VTable;
 
 
@@ -34,7 +35,7 @@ public class TableMethod extends ServiceMethod{
 	public TableMethod() {
 		super(new ServiceMethodDescription("table", "Fill in templates from a table")
 			.addArgument("table", "table to fill templates", VTable.class)	
-			.addArgument("option", "run OPI in DETACHED, ATTACHED, EDIT", VEnum.class));
+			.addArgument("option", "run OPI in DETACHED, ATTACHED, EDIT", VString.class));
 	    }
 
 	@Override
@@ -42,7 +43,7 @@ public class TableMethod extends ServiceMethod{
 			WriteFunction<Map<String, Object>> callback,
 			WriteFunction<Exception> errorCallback) {
 		
-		VEnum option = ((VEnum) parameters.get("option"));
+		VString option = ((VString) parameters.get("option"));
 		VTable table = ((VTable) parameters.get("table"));
 		int columnCount = table.getColumnCount();
 		int rowCount = table.getRowCount();
@@ -63,7 +64,12 @@ public class TableMethod extends ServiceMethod{
 					if (table.getColumnType(j).equals(String.class)) {
 						for (int i = 0; i < rowCount; i++) {
 							String templateName = ((List<?>)table.getColumnData(j)).get(i).toString();
-							TreeSet<Integer> index = devices.get(templateName);
+							TreeSet<Integer> index;
+							if (devices.get(templateName) == null){
+								index = new TreeSet<Integer>();
+							}else{
+								index = devices.get(templateName);
+							}
 							index.add(i);
 							devices.put(templateName, index);
 						}
@@ -79,7 +85,13 @@ public class TableMethod extends ServiceMethod{
 					for (int column = 0; column < columnCount; column++) {
 						String columnName = table.getColumnName(column);
 						Object value = tableRow.getValue(column);
-						props.put(columnName, (String)value);
+						if (table.getColumnType(column).equals(String.class)){
+							props.put(columnName, (String)value);
+						} else if (table.getColumnType(column).equals(Integer.TYPE)) {
+							props.put(columnName, ((Integer)value).toString());
+						} else if (table.getColumnType(column).equals(Double.TYPE)) {
+							props.put(columnName, ((Double)value).toString());
+						}
 					}
 					propTreeSet.add(new XMLPropertyCollection(row.toString(),props));
 				}

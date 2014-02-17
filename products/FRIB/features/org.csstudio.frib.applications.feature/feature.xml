@@ -58,6 +58,10 @@
          id="org.csstudio.scan.ui.feature"
          version="0.0.0"/>
 
+   <includes
+         id="org.csstudio.pvmanager.feature"
+         version="0.0.0"/>
+
    <plugin
          id="org.csstudio.simplepv"
          download-size="0"
