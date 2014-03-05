@@ -17,3 +17,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Description: Adds ui for rocs support (e.g preference page, ...)
 Import-Package: org.eclipse.ui.part
 Export-Package: org.csstudio.utility.rocs.ui
+Bundle-ClassPath: bin/,
+ .

@@ -10,5 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.csstudio.security;bundle-version="1.0.0",
  org.eclipse.core.resources
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.csstudio.utility.rocs
+Bundle-ClassPath: bin/,
+ .

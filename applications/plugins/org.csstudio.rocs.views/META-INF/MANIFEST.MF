@@ -16,3 +16,5 @@ Require-Bundle: org.eclipse.ui,
  org.csstudio.utility.channel
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ bin/

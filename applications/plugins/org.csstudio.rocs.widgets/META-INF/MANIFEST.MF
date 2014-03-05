@@ -31,3 +31,5 @@ Export-Package: org.csstudio.rocs.widgets
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.ui.part
+Bundle-ClassPath: bin/,
+ icons/
