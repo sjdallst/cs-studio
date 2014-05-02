@@ -12,11 +12,14 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-    <module>org.csstudio.basic.epics.product</module>
-    <module>org.csstudio.sns.feature.applications</module>
-    <module>org.csstudio.sns.feature.basiccore</module>
-    <module>org.csstudio.sns.feature.beamline.image</module>
-    <module>org.csstudio.sns.feature.core</module>
     <module>org.csstudio.sns.feature.eclipse</module>
+    <module>org.csstudio.sns.feature.core</module>
+    <module>org.csstudio.sns.feature.basiccore</module>
+    <module>org.csstudio.sns.feature.applications</module>
+    <module>org.csstudio.sns.feature.repository</module>
+    <module>org.csstudio.sns.feature.repository.git</module>
+    <module>org.csstudio.sns.feature.repository.cvs</module>
+    <module>org.csstudio.basic.epics.product</module>
+    <module>org.csstudio.sns.feature.beamline.image</module>
   </modules>
 </project>
