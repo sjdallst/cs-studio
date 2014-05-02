@@ -1,18 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
+   <category-def name="sns" label="SNS Components"/>
+
+   <feature id="org.csstudio.sns.feature.applications">
+      <category name="sns"/>
+   </feature>
+   <feature id="org.csstudio.sns.feature.basiccore">
+      <category name="sns"/>
+   </feature>
+   <feature id="org.csstudio.sns.feature.beamline.image">
+      <category name="sns"/>
+   </feature>
+   <feature id="org.csstudio.sns.feature.core">
+      <category name="sns"/>
+   </feature>
+   <feature id="org.csstudio.sns.feature.eclipse">
+      <category name="sns"/>
+   </feature>
+   <feature id="org.csstudio.sns.feature.repository">
+      <category name="sns"/>
+   </feature>
+   <feature id="org.csstudio.sns.feature.repository.cvs">
+      <category name="sns"/>
+   </feature>
+   <feature id="org.csstudio.sns.feature.repository.git">
+      <category name="sns"/>
+   </feature>
 <!--
-   <feature url="features/org.csstudio.sns.feature.optional_3.2.14.qualifier.jar" id="org.csstudio.sns.feature.optional" version="3.2.14.qualifier">
-      <category name="additions"/>
+   <feature id="org.csstudio.sns.feature.snscore">
+      <category name="sns"/>
    </feature>
-   <feature url="features/org.csstudio.scan.ui.feature_3.2.1.qualifier.jar" id="org.csstudio.scan.ui.feature" version="3.2.1.qualifier">
-      <category name="additions"/>
+   <feature id="org.csstudio.sns.feature.snsapps">
+      <category name="sns"/>
    </feature>
-   <feature url="features/org.csstudio.sns.feature.beamline.image_3.2.0.qualifier.jar" id="org.csstudio.sns.feature.beamline.image" version="3.2.0.qualifier">
-      <category name="additions"/>
+   <feature id="org.csstudio.sns.feature.optional">
+      <category name="sns"/>
    </feature>
-   <feature url="features/org.csstudio.sns.feature.pydev_1.0.0.qualifier.jar" id="org.csstudio.sns.feature.pydev" version="1.0.0.qualifier">
-      <category name="additions"/>
+   <feature id="org.csstudio.sns.feature.optional.linux">
+      <category name="sns"/>
    </feature>
-   <category-def name="additions" label="Optional SNS Components"/>
--->
+   <feature id="org.csstudio.sns.feature.pydev">
+      <category name="sns"/>
+   </feature>
+ -->
 </site>
