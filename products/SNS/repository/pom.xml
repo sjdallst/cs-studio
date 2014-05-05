@@ -89,6 +89,14 @@ then builds product from core, applications and SNS features
               <!-- Add version number to product top directory and zipped product -->
               <rootFolder>basic-epics-${project.version}</rootFolder>
               <archiveFileName>basic-epics-${project.version}</archiveFileName>
+              <!-- When listing more than one product, need 'attachId' -->
+              <attachId>basic</attachId>
+            </product>
+            <product>
+              <id>sns-css</id>
+              <rootFolder>sns-css-${project.version}</rootFolder>
+              <archiveFileName>sns-css-${project.version}</archiveFileName>
+              <attachId>sns</attachId>
             </product>
           </products>
         </configuration>
