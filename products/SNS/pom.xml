@@ -86,10 +86,17 @@
       <layout>p2</layout>
     </repository>
     <repository>
+      <id>pydev</id>
+      <url>http://update-production-pydev.s3.amazonaws.com/pydev/updates</url>
+      <layout>p2</layout>
+    </repository>  
+    <!--
+    <repository>
       <id>rap</id>
       <url>http://download.eclipse.org/rt/rap/1.5/runtime</url>
       <layout>p2</layout>
     </repository>  
+     -->
   </repositories>
   
   <!-- if a local repository is specified then enable the repository for build. -->

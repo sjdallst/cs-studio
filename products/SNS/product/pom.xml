@@ -21,5 +21,6 @@
     <module>org.csstudio.sns.feature.repository.cvs</module>
     <module>org.csstudio.basic.epics.product</module>
     <module>org.csstudio.sns.feature.beamline.image</module>
+    <module>org.csstudio.sns.feature.pydev</module>
   </modules>
 </project>
