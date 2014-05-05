@@ -96,7 +96,17 @@ then builds product from core, applications and SNS features
               <id>sns-css</id>
               <rootFolder>sns-css-${project.version}</rootFolder>
               <archiveFileName>sns-css-${project.version}</archiveFileName>
-              <attachId>sns</attachId>
+              <!-- <attachId>sns</attachId> -->
+            </product>
+            <product>
+              <id>archive-engine</id>
+              <rootFolder>archive-engine-${project.version}</rootFolder>
+              <archiveFileName>archive-engine-${project.version}</archiveFileName>
+            </product>
+            <product>
+              <id>archive-config</id>
+              <rootFolder>archive-config-${project.version}</rootFolder>
+              <archiveFileName>archive-config-${project.version}</archiveFileName>
             </product>
           </products>
         </configuration>
