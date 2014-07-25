@@ -65,7 +65,7 @@ public class LogbookBuilder {
      * 
      * @return Logbook - concerete immutable instance of a Logbook
      */
-    Logbook build() {
+    public Logbook build() {
 	return new LogbookImpl(name, owner);
     }
 

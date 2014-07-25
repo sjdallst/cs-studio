@@ -10,7 +10,7 @@ import org.eclipse.ui.part.ViewPart;
 public class ProbeViewPart extends ViewPart {
 	
 	 // The ID of the view as specified by the extension point
- 	public static final String VIEW_ID = "org.csstudio.diag.pvmanager.ProbeViewPart"; //$NON-NLS-1$
+ 	public static final String VIEW_ID = "org.csstudio.diag.pvmanager.fxprobe"; //$NON-NLS-1$
 	public static final String ID = "org.csstudio.diag.pvmanager.fxprobe.ProbeViewPart";
 	private FXCanvas canvas;
 	private JavaFXProbeWidget probe;
@@ -33,7 +33,7 @@ public class ProbeViewPart extends ViewPart {
             }
     	};
     	
-    	probe = new JavaFXProbeWidget();
+    	probe = new JavaFXProbeWidget(this);
 		probe.start();
     	canvas.setScene(probe.getScene());
 
@@ -53,8 +53,14 @@ public class ProbeViewPart extends ViewPart {
 	}
 	
 	public void setPVName(String pVName){
-    	probe.setPVName(pVName);
+    	if(probe.setPVName(pVName)) {
+    		setPartName(pVName);
+    	}
     }
+	
+	public void writePVName(String pVName) {
+		setPartName(pVName);
+	}
 	
 	@Override
 	public void dispose() {

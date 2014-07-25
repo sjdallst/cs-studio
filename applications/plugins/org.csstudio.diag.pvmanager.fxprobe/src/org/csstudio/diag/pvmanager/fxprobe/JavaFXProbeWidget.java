@@ -80,6 +80,7 @@ public class JavaFXProbeWidget {
     
     PV<Object , Object> pv;
     PVReader<?> formulaPV;
+    private ProbeViewPart parentView;
     private GridPane grid;
     private GridPane metaDataGrid;
     private GridPane generalInfoGrid;
@@ -157,6 +158,9 @@ public class JavaFXProbeWidget {
  // The ID of the view as specified by the extension point
  	public static final String VIEW_ID = "org.csstudio.diag.pvmanager.fxprobe"; //$NON-NLS-1$
     
+ 	public JavaFXProbeWidget(ProbeViewPart parentView) {
+ 		this.parentView = parentView;
+ 	}
     
     public void start(){
         this.start(new Stage());
@@ -765,7 +769,7 @@ public class JavaFXProbeWidget {
       
         grid.setAlignment(Pos.TOP_LEFT);
         grid.setHgap(10);
-        grid.setVgap(10);
+        grid.setVgap(5);
         grid.setPadding(new Insets(25, 25, 25, 25));
         
         metaDataGrid.setAlignment(Pos.TOP_LEFT);
@@ -881,18 +885,18 @@ public class JavaFXProbeWidget {
             graphHeight = (int)(grid.getHeight() - (17*10 + 16*pvNameField.getHeight() + 50));
         } 
         else if(metaDataPane.isExpanded()) {
-            graphHeight = (int)(grid.getHeight() - (14*10 + 13*pvNameField.getHeight() + 50));
+            graphHeight = (int)(grid.getHeight() - (13*10 + 12*pvNameField.getHeight() + 50));
         } 
         else if(generalInfoPane.isExpanded()) {
-            graphHeight = (int)(grid.getHeight() - (11*10 + 10*pvNameField.getHeight() + 50));
+            graphHeight = (int)(grid.getHeight() - (10*10 + 9*pvNameField.getHeight() + 50));
         } 
         else {
-            graphHeight = (int)(grid.getHeight() - (7*10 + 6*pvNameField.getHeight() + 50));
+            graphHeight = (int)(grid.getHeight() - (7*10 + 5*pvNameField.getHeight() + 50));
         }
         
-        final int graphHeightFinal = Math.max(60, graphHeight);
+        final int graphHeightFinal = Math.max(10, graphHeight);
         
-        final int graphWidthFinal = Math.max(60, (int)(grid.getWidth() - 50));
+        final int graphWidthFinal = Math.max(10, (int)(grid.getWidth() - 50));
         
         final byte[] pixels = graph.render(value, graphWidthFinal, graphHeightFinal);
 
@@ -957,7 +961,7 @@ public class JavaFXProbeWidget {
      * Creates a pv that will read and/or write from the channel specified by pvName.
      * @param pvName 
      */
-    private void setupPV(String pvName) {
+    private boolean setupPV(String pvName) {
 
         if (pv != null || formulaPV != null) {
 
@@ -1035,15 +1039,18 @@ public class JavaFXProbeWidget {
                         })
                         .asynchWriteAndMaxReadRate(ofHertz(10));
             }
+            parentView.writePVName(pvName);
         }
         catch (RuntimeException ex) { //if an error is thrown, update the associated textfield
             setLastError(ex);
+            return false;
         }
+        return true;
     }
 
-    public void setPVName(String pVName){
+    public boolean setPVName(String pVName){
     	pvNameField.setText(pVName);
-    	setupPV(pVName);
+    	return setupPV(pVName);
     }
     
     public static String createNewInstance() {
